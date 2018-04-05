@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
+
+@await Component.InvokeAsync("About")
+
+@await Component.InvokeAsync("Timeline")
+
+@await Component.InvokeAsync("ServiceCompany")
+
+@await Component.InvokeAsync("OurProduction")
+
+<!-- Pricing -->
+<!-- /Pricing -->
+<!-- Testimonial -->
+@await Component.InvokeAsync("Partner")
+<!-- /Testimonial -->
+
+@await Component.InvokeAsync("Team")
+
+@await Component.InvokeAsync("Recruitment")

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MVC_Thehegeo.Models.BlogModels.FeaturedWork>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@using System.Threading;
+@using System.Globalization;
+@{
+    CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+}
+<!-- Portfolio -->
+<div id="portfolio" class="section md-padding bg-grey">
+    <!-- Container -->
+    <div class="container">
+        <!-- Row -->
+        <div class="row">
+            <!-- Section header -->
+            <div class="section-header text-center">
+                <h2 class="title">@Localizer["OurProduction"]</h2>
+            </div>
+            <!-- /Section header -->
+            @foreach (var item in Model)
+            {
+                string[] images = item.Thumbnail?.Split("|");
+                string imageDefault = "~/Uploads/Images/Picture21.jpg";
+                string image = images?.SingleOrDefault() ?? imageDefault;
+                if (cultureInfo.Name == "en")
+                {
+                    <!-- Work -->
+                    <div class="col-md-4 col-xs-6 work">
+                        <img class="img-responsive" src="@image" alt="">
+                        <div class="overlay"></div>
+                        <div class="work-content">
+                            <span>Category</span>
+                            <h3>@item.IntroEN</h3>
+                            <div class="work-link">
+                                <a asp-action="ProductDetail" asp-controller="Blog" asp-route-id="@item.Id"><i class="fa fa-external-link"></i></a>
+                                <a class="lightbox" href="@image"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Work -->
+
+                }
+                else
+                {
+                    <!-- Work -->
+                    <div class="col-md-4 col-xs-6 work">
+                        <img class="img-responsive" src="@image" alt="">
+                        <div class="overlay"></div>
+                        <div class="work-content">
+                            <span>Danh mục</span>
+                            <h3>@item.IntroVI</h3>
+                            <div class="work-link">
+                                <a asp-action="ProductDetail" asp-controller="Blog" asp-route-id="@item.Id"><i class="fa fa-external-link"></i></a>
+                                <a class="lightbox" href="@image"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Work -->
+
+                }
+            }
+        </div>
+        <!-- /Row -->
+    </div>
+    <!-- /Container -->
+</div>
+<!-- /Portfolio -->

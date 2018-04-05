@@ -1,0 +1,93 @@
+@model IEnumerable<MVC_Thehegeo.Models.BlogModels.Recruitment>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@using System.Threading;
+@using System.Globalization;
+@inject IViewLocalizer Localizer
+@{
+    CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+}
+<!-- Blog -->
+<div id="blog" class="section md-padding bg-grey">
+
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Row -->
+        <div class="row">
+
+            <!-- Section header -->
+            <div class="section-header text-center">
+                <h2 class="title">@Localizer["Recruitment"]</h2>
+            </div>
+            <!-- /Section header -->
+            <!-- blog -->
+            @foreach (var item in Model)
+            {
+                if (cultureInfo.Name == "en")
+                {
+                    <div class="col-md-4">
+                        <div class="blog">
+                            <div class="blog-img">
+                                <img class="img-responsive" src="~/Client/img/blog1.jpg" alt="">
+                            </div>
+                            <div class="blog-content">
+                                <ul class="blog-meta">
+                                    <li><i class="fa fa-user"></i>John doe</li>
+                                    <li><i class="fa fa-clock-o"></i>18 Oct</li>
+                                    <li><i class="fa fa-comments"></i>57</li>
+                                </ul>
+                                <h3>@item.TitleEN</h3>
+                                @if (@item.ContentEN.Length > 30)
+                                {
+
+                                    @Html.Raw(item.ContentEN.Substring(0, 30))
+                                }
+                                else
+                                {
+                                    @Html.Raw(item.ContentEN)
+
+                                }
+
+                                <a asp-action="RecruitmentDetail" asp-controller="Blog" asp-route-id="@item.Id">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                else
+                {
+                    <div class="col-md-4">
+                        <div class="blog">
+                            <div class="blog-img">
+                                <img class="img-responsive" src="~/Client/img/blog1.jpg" alt="">
+                            </div>
+                            <div class="blog-content">
+                                <h3>@item.TitleVI</h3>
+                                @if (@item.ContentVI.Length > 30)
+                                {
+
+                                    @Html.Raw(item.ContentVI.Substring(0, 30))
+                                }
+                                else
+                                {
+                                    @Html.Raw(item.ContentVI)
+
+                                }
+                                <a asp-action="RecruitmentDetail" asp-controller="Blog" asp-route-id="@item.Id">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+
+            <!-- /blog -->
+        </div>
+        <!-- /Row -->
+
+    </div>
+    <!-- /Container -->
+
+</div>
+<!-- /Blog -->

@@ -1,0 +1,38 @@
+<!-- Footer -->
+<footer id="footer" class="sm-padding bg-dark">
+    <!-- Container -->
+    <div class="container">
+        <!-- Row -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- footer logo -->
+                <div class="footer-logo">
+                    <a asp-action="Index" asp-controller="Home"><img src="~/Client/img/logo-alt.png" alt="logo"></a>
+                </div>
+                <!-- /footer logo -->
+                @await Component.InvokeAsync("Contact")
+                <!-- footer copyright -->
+                <div class="footer-copyright">
+                    <p style="color:floralwhite;">© 2017 <a asp-action="Index" asp-controller="Home" target="_blank">FUTURIS-X</a></p>
+                </div>
+                <!-- /footer copyright -->
+            </div>
+        </div>
+        <!-- /Row -->
+    </div>
+    <!-- /Container -->
+</footer>
+<!-- /Footer -->
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->
+<!-- Preloader -->
+<div id="preloader">
+    <div class="preloader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!-- /Preloader -->

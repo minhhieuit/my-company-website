@@ -1,0 +1,59 @@
+@model IEnumerable<MVC_Thehegeo.Models.BlogModels.Partner>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@using System.Threading;
+@using System.Globalization;
+@inject IViewLocalizer Localizer
+@{
+    CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+}
+<div id="testimonial" class="section md-padding">
+    <!-- Background Image -->
+    <div class="bg-img" style="background-image: url('./Client/img/background3.jpg');">
+        <div class="overlay"></div>
+    </div>
+    <!-- /Background Image -->
+    <!-- Container -->
+    <div class="container">
+        <!-- Row -->
+        <div class="row">
+            <!-- Testimonial slider -->
+            <div class="col-md-10 col-md-offset-1">
+                <div id="testimonial-slider" class="owl-carousel owl-theme">
+                    @foreach (var item in Model)
+                    {
+                        if (cultureInfo.Name == "en")
+                        {
+                            <!-- testimonial -->
+                            <div class="testimonial">
+                                <div class="testimonial-meta">
+                                    <img src="@item.Image" alt="@item.Company">
+                                    <h3 class="white-text">@item.Company</h3>
+                                    <span>@item.ContentEN</span>
+                                </div>
+                                <p class="white-text">@item.ContentEN</p>
+                            </div>
+                            <!-- /testimonial -->
+                        }
+                        else
+                        {
+                            <!-- testimonial -->
+                            <div class="testimonial">
+                                <div class="testimonial-meta">
+                                    <img src="@item.Image" alt="@item.Company">
+                                    <h3 class="white-text">@item.Company</h3>
+                                    <span>@item.ContentVI</span>
+                                </div>
+                                <p class="white-text">@item.ContentVI</p>
+                            </div>
+                            <!-- /testimonial -->
+                        }
+                    }
+                </div>
+            </div>
+            <!-- /Testimonial slider -->
+        </div>
+        <!-- /Row -->
+    </div>
+    <!-- /Container -->
+</div>

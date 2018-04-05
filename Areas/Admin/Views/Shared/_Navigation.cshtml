@@ -1,0 +1,92 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <!-- <li class="nav-header">
+        <div class="dropdown profile-element"> <span>
+            <img alt="image" class="img-circle" src="~/Admin/img/profile_small.jpg" />
+                </span>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">HieuNM</strong>
+                </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+                <li><a href="mailbox.html">Mailbox</a></li>
+                <li class="divider"></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+        <div class="logo-element">
+            IN+
+        </div>
+    </li> -->
+            <!-- Nav header -->
+            @await Component.InvokeAsync("UserProfile")
+            <!-- Nav header -->
+            <li>
+                <a href="#"><i class="fa fa-info"></i> <span class="nav-label">About</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a asp-area="Admin" asp-controller="About" asp-action="Index">List About</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-gear"></i> <span class="nav-label">Service</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a asp-area="Admin" asp-controller="ServiceCompany" asp-action="Index">List Service Company</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-tags"></i> <span class="nav-label">Categories</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a asp-area="Admin" asp-controller="Category" asp-action="Index">List Categories</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label">Posts</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a asp-area="Admin" asp-controller="Post" asp-action="Index">List Posts</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-paper-plane"></i> <span class="nav-label">Products</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a asp-area="Admin" asp-controller="FeaturedWork" asp-action="Index">List Products</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-slideshare"></i> <span class="nav-label">Partners</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a asp-area="Admin" asp-controller="Partner" asp-action="Index">List Partners</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-history"></i> <span class="nav-label">Timeline</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a asp-area="Admin" asp-controller="Timeline" asp-action="Index">List Timelines</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-bitcoin"></i> <span class="nav-label">Slider</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a asp-area="Admin" asp-controller="Slider" asp-action="Index">List Slider</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-group"></i> <span class="nav-label">Team</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a asp-area="Admin" asp-controller="Team" asp-action="Index">List User In Team</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-group"></i> <span class="nav-label">Recruitment</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a asp-area="Admin" asp-controller="Recruitment" asp-action="Index">List Recruitment</a></li>
+                </ul>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="CompanyInfo" asp-action="Index"><i class="fa fa-key"></i> <span class="nav-label">Company Info</span></a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

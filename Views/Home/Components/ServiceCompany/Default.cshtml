@@ -1,0 +1,60 @@
+@model IEnumerable<MVC_Thehegeo.Models.BlogModels.ServiceCompany>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@using System.Threading;
+@using System.Globalization;
+@inject IViewLocalizer Localizer
+@{
+    CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+}
+<!-- Service -->
+<div id="service" class="section md-padding">
+    <!-- Container -->
+    <div class="container">
+        <!-- Row -->
+        <div class="row">
+            <!-- Section header -->
+            <div class="section-header text-center">
+                <h2 class="title">@Localizer["WhatWeDo"]</h2>
+            </div>
+            <!-- /Section header -->
+            @foreach (var item in Model)
+            {
+                if (cultureInfo.Name == "en")
+                {
+                    <!-- service -->
+                    <a asp-action="ServiceDetail" asp-controller="Blog" asp-route-id="@item.Id">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="service">
+                                <i class="@item.Icon"></i>
+                                <h3>@item.TitleEN</h3>
+
+                                <p>@item.IntroEN</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- /service -->
+                }
+                else
+                {
+                    <!-- service -->
+                    <a asp-action="ServiceDetail" asp-controller="Blog" asp-route-id="@item.Id">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="service">
+                                <i class="@item.Icon"></i>
+                                <h3>@item.TitleVI</h3>
+
+                                <p>@item.IntroVI</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- /service -->
+                }
+
+            }
+        </div>
+        <!-- /Row -->
+    </div>
+    <!-- /Container -->
+</div>
+<!-- /Service -->

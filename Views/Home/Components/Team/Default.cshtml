@@ -1,0 +1,56 @@
+@model IEnumerable<MVC_Thehegeo.Models.BlogModels.TeamInfo>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@using System.Threading;
+@using System.Globalization;
+@{
+    CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+}
+<!-- Team -->
+<div id="team" class="section md-padding">
+    <!-- Container -->
+    <div class="container">
+        <!-- Row -->
+        <div class="row">
+            <!-- Section header -->
+            <div class="section-header text-center">
+                <h2 class="title">@Localizer["Team"]</h2>
+            </div>
+            <!-- /Section header -->
+            @foreach (var item in Model)
+            {
+                <!-- team -->
+                <div class="col-sm-4">
+                    <div class="team">
+                        <div class="team-img">
+                            <img class="img-responsive" src="@item.Avatar" alt="">
+                            <div class="overlay">
+                                <div class="team-social">
+                                    <a href="@item.FacebookLink"><i class="fa fa-facebook"></i></a>
+                                    <a href="@item.GooglePlusLink"><i class="fa fa-google-plus"></i></a>
+                                    <a href="@item.TwitterLink"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            @if (cultureInfo.Name == "en")
+                            {
+                                <h3>@item.FullNameEN</h3>
+                                <span>@item.FunctionEN</span>
+                            }
+                            else
+                            {
+                                <h3>@item.FullNameVI</h3>
+                                <span>@item.FunctionVI</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!-- /team -->
+            }
+        </div>
+        <!-- /Row -->
+    </div>
+    <!-- /Container -->
+</div>
+<!-- /Team -->

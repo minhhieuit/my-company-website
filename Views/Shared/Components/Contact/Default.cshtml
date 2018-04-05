@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MVC_Thehegeo.Models.BlogModels.CompanyInfo>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@using System.Threading;
+@using System.Globalization;
+@{
+    CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+    int count = 1;
+}
+<!-- contact -->
+<div class="contact" style="text-align:center;">
+    @foreach (var item in Model)
+    {
+        if (count == 1)
+        {
+            <div class="row-item">
+                @if (cultureInfo.Name == "en")
+                {
+                    <span style="color:darkgoldenrod;">Head office: </span> <p style="display:inline-block;">@item.AddressEN</p>
+                }
+                else
+                {
+                    <span style="color:darkgoldenrod;">Trụ sở chính: </span> <p style="display:inline-block;">@item.AddressVI</p>
+                }
+            </div>
+            count++;
+        }
+        else
+        {
+            <div class="row-item">
+                @if (cultureInfo.Name == "en")
+                {
+                    <span style="color:darkgoldenrod;">Hanoi office: </span> <p style="display:inline-block;">@item.AddressEN</p>
+                }
+                else
+                {
+                    <span style="color:darkgoldenrod;">Văn phòng Hà Nội: </span> <p style="display:inline-block;">@item.AddressVI</p>
+                }
+            </div>
+            count++;
+        }
+
+    }
+    <div class="row-item">
+        <span style="color:darkgoldenrod;">Phone: </span><p style="display:inline-block;">@Model.FirstOrDefault().Phone</p>
+    </div>
+    <div class="row-item">
+        <span style="color:darkgoldenrod;">Email: </span><p style="display:inline-block;">@Model.FirstOrDefault().Email</p>
+    </div>
+</div>
+<!-- /contact -->

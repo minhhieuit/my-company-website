@@ -1,0 +1,85 @@
+﻿@model MVC_Thehegeo.Models.BlogModels.Recruitment
+@using System.Threading;
+@using System.Globalization;
+@{
+    CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+    ViewData["Title"] = "Recruitment detail";
+    var model = (List<MVC_Thehegeo.Models.BlogModels.Recruitment>)ViewBag.ListRecruitment;
+    model.Remove(Model);
+}
+<!-- Blog -->
+<div id="blog" class="section md-padding">
+    <!-- Container -->
+    <div class="container">
+        <!-- Row -->
+        <div class="row">
+            <!-- Main -->
+            <main id="main" class="col-md-9">
+                <div class="blog">
+                    <div class="blog-img">
+                        @if (Model.ImagePath == null)
+                        {
+                            <img class="img-responsive" src="~/Client/img/blog-post.jpg" alt="">
+                        }
+                        else
+                        {
+                            <img src="/@Model.ImagePath" alt="Alternate Text" />
+                        }
+                    </div>
+                    <div class="blog-content">
+                        <ul class="blog-meta">
+                            <li><i class="fa fa-user"></i>Admin</li>
+                            <li><i class="fa fa-clock-o"></i>18 Oct</li>
+                            <li><i class="fa fa-comments"></i>57</li>
+                        </ul>
+                        @if (cultureInfo.Name == "en")
+                        {
+                            <h3>@Model.TitleEN</h3>
+                            @Html.Raw(Model.ContentEN)
+                        }
+                        else
+                        {
+                            <h3>@Model.TitleVI</h3>
+                            @Html.Raw(Model.ContentVI)
+                        }
+                    </div>
+                </div>
+            </main>
+            <!-- /Main -->
+            <!-- Aside -->
+            <aside id="aside" class="col-md-3">
+                <!-- Search -->
+                <div class="widget">
+                    <div class="widget-search">
+                        <input class="search-input" type="text" placeholder="search">
+                        <button class="search-btn" type="button"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+                <!-- /Search -->
+                <!-- Category -->
+                <div class="widget">
+                    <h3 class="title">List</h3>
+                    <div class="widget-category">
+                        @foreach (var item in model)
+                        {
+                            if (cultureInfo.Name == "en")
+                            {
+                                <a asp-action="Index" asp-controller="Recruitment" asp-route-id="@item.Id">@item.TitleEN</a>
+                            }
+                            else
+                            {
+                                <a asp-action="Index" asp-controller="Recruitment" asp-route-id="@item.Id">@item.TitleVI</a>
+                            }
+                        }
+
+                    </div>
+                </div>
+                <!-- /Category -->
+            </aside>
+            <!-- /Aside -->
+        </div>
+        <!-- /Row -->
+    </div>
+    <!-- /Container -->
+</div>
+<!-- /Blog -->

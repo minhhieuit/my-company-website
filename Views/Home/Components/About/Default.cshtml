@@ -1,0 +1,55 @@
+@model IEnumerable<MVC_Thehegeo.Models.BlogModels.About>
+@using Microsoft.AspNetCore.Mvc.Localization
+@using System.Threading;
+@using System.Globalization;
+@{
+    CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+}
+@inject IViewLocalizer Localizer
+<!-- About -->
+<div id="about" class="section md-padding">
+    <!-- Container -->
+    <div class="container">
+        <!-- Row -->
+        <div class="row">
+            <!-- Section header -->
+            <div class="section-header text-center" id="home-about">
+                <h2 class="title">@Localizer["About"]</h2>
+            </div>
+            <!-- /Section header -->
+            @foreach (var item in Model.Take(3))
+            {
+                if (cultureInfo.Name == "en")
+                {
+                    <!-- about -->
+                    <div class="col-md-4 about  ">
+                        <div class="about1">
+                            <i class="@item.Thumbnail"></i>
+                            <h3>@item.TitleEN</h3>
+                            <p>@item.ContentEN</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                    <!-- /about -->
+
+                }
+                else
+                {
+                    <!-- about -->
+                    <div class="col-md-4 about" >
+                        <div class="about1">
+                            <i class="@item.Thumbnail"></i>
+                            <h3>@item.TitleVI</h3>
+                            <p>@item.ContentVI</p>
+                            <a href="#">Read more</a>
+                        </div>
+                    </div>
+                    <!-- /about -->
+                }
+            }
+        </div>
+        <!-- /Row -->
+    </div>
+    <!-- /Container -->
+</div>
+<!-- /About -->

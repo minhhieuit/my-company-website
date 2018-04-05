@@ -1,0 +1,93 @@
+﻿@model MVC_Thehegeo.Models.BlogModels.FeaturedWork
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@using System.Threading;
+@using System.Globalization;
+@{
+    CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+    ViewData["Title"] = "Product detail";
+    var model = (List<MVC_Thehegeo.Models.BlogModels.FeaturedWork>)ViewBag.ListProduct;
+    var listImages = (string[])ViewBag.ListImages;
+    if(listImages == null)
+    {
+        listImages.Append("~/Uploads/Images/Picture21.jpg");
+    }
+    model.Remove(Model);
+}
+<!-- Blog -->
+<div id="portfolio" class="section md-padding">
+    <!-- Container -->
+    <div class="container">
+        <!-- Row -->
+        <div class="row">
+            <!-- Main -->
+            <main id="main" class="col-md-9">
+                <div class="blog">
+                    <div class="blog-img">
+                        <div class="section">
+                            <div id="about-slider" class="owl-carousel owl-theme">
+                                @foreach (var item in listImages)
+                                {
+                                    <img class="img-responsive" src="/@item" alt="">
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <ul class="blog-meta">
+                            <li><i class="fa fa-user"></i>Admin</li>
+                            <li><i class="fa fa-clock-o"></i>18 Oct</li>
+                            <li><i class="fa fa-comments"></i>57</li>
+                        </ul>
+                        @if (cultureInfo.Name == "en")
+                        {
+                            <h3>@Model.NameEN</h3>
+                            @Html.Raw(Model.ContentEN)
+                        }
+                        else
+                        {
+                            <h3>@Model.NameVI</h3>
+                            @Html.Raw(Model.ContentVI)
+                        }
+                    </div>
+                </div>
+            </main>
+            <!-- /Main -->
+            <!-- Aside -->
+            <aside id="aside" class="col-md-3">
+                <!-- Search -->
+                <div class="widget">
+                    <div class="widget-search">
+                        <input class="search-input" type="text" placeholder="search">
+                        <button class="search-btn" type="button"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+                <!-- /Search -->
+                <!-- Category -->
+                <div class="widget">
+                    <h3 class="title">List</h3>
+                    <div class="widget-category">
+                        @foreach (var item in model)
+                        {
+                            if (cultureInfo.Name == "en")
+                            {
+                                <a asp-action="ProductDetail" asp-controller="Blog" asp-route-id="@item.Id">@item.NameEN</a>
+                            }
+                            else
+                            {
+                                <a asp-action="ProductDetail" asp-controller="Blog" asp-route-id="@item.Id">@item.NameVI</a>
+                            }
+                        }
+
+                    </div>
+                </div>
+                <!-- /Category -->
+            </aside>
+            <!-- /Aside -->
+        </div>
+        <!-- /Row -->
+    </div>
+    <!-- /Container -->
+</div>
+<!-- /Blog -->
